@@ -2,11 +2,21 @@
  * @prettier
  */
 
-import React, { Component } from "react";
-import { View } from "react-native";
+import React from 'react';
+import {SafeAreaView, StatusBar, View} from 'react-native';
+import {Provider} from 'react-redux';
+import AppNavigator from './navigators';
+import store from './redux/store';
 
-export default class App extends Component {
-  render() {
-    return <View />;
-  }
-}
+export default () => (
+  <>
+    <View style={{height: 20, backgroundColor: '#F5F5F5'}}>
+      <StatusBar translucent backgroundColor="#F5F5F5" />
+    </View>
+    <SafeAreaView style={{flex: 1, backgroundColor: '#FFFFFF'}}>
+      <Provider store={store}>
+        <AppNavigator />
+      </Provider>
+    </SafeAreaView>
+  </>
+);
